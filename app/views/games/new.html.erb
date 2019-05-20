@@ -1,0 +1,20 @@
+<h1>New Game</h1>
+
+<div class="container">
+  <% @letters.each do |letter| %>
+     <span class="square"><%= letter %></span>
+  <% end  %>
+</div>
+<br>
+<br>
+<div class="container" >
+  <form method="post" action="/score">
+    <label for="word">Whats is the longer word you can find</label>
+    <div class="form-group">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :grilla, @letters %>
+      <input type="text" name="word">
+      <input type="submit" value="play">
+    </div>
+  </form>
+</div>
