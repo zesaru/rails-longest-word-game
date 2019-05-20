@@ -1,22 +1,20 @@
 class GamesController < ApplicationController
 require 'open-uri'
 require 'json'
-
   def new
     @letters = gen_grilla(10)
   end
 
   def score
     @message
-
     if included?(params[:word], params[:grilla])
       if english_word?(params[:word])
-        @message = "Congratulations! #{params[:word]} is a valid English Word"
+        @message = "Congratulations! <strong>#{params[:word]}</strong> is a valid English Word"
       else
-        @message = "Sorry but #{params[:word]} does not seem to be a valid English word"
+        @message = "Sorry but <strong>#{params[:word]}</strong> does not seem to be a valid English word"
       end
     else
-      @message = "Sorry but #{params[:word]} can't be built out of #{params[:grilla]}"
+      @message = "Sorry but <strong>#{params[:word]}</strong> can't be built out of <strong>#{params[:grilla]}</strong>"
     end
     @message
   end
